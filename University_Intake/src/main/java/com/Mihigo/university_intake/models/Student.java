@@ -33,4 +33,7 @@ public class Student {
 	@ManyToOne
 	private Faculty faculty;
 	
+	
+	
+	
 }

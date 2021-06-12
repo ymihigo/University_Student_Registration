@@ -11,4 +11,7 @@ public class Faculty {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String facultyname;
+	
+	
+	
 }
