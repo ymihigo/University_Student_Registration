@@ -1,6 +1,7 @@
 package com.Mihigo.university_intake.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,15 @@ public class FacultyServicesImpl implements FacultyService{
 	@Override
 	public Faculty searchById(Long id) {
 		try {
-			Faculty fac=facrepo.getById(id);
-			return fac;
+			Optional<Faculty> opt=this.facrepo.findById(id);
+			Faculty fac=new Faculty();
+			if(opt.isPresent()) {
+				fac=opt.get();
+				return fac;
+			}else {
+				throw new RuntimeException("invalid id");
+			}
+			
 		}catch (Exception e) {
 			throw new RuntimeException(e.getMessage());
 		}
