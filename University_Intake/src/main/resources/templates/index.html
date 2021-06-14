@@ -5,7 +5,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a th:href="@{/newStudent}">New Student</a>
-<a th:href="@{/newFaculty}">New Faculty</a>
+<a th:href="@{/newStudent}">New Student</a>   <a th:href="@{/newFaculty}">New Faculty</a><br>
+
+<table border="2">
+<thead>
+<th>ID</th>
+<th>FACULTY NAME</th>
+</thead>
+<tbody>
+<tr th:each="faculty : ${facultylist}">
+<td>[[*{faculty.id}]]</td>
+<td>[[*{faculty.facultyname}]]</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.Mihigo.university_intake.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ public class Faculty {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@Column(unique = true)
 	private String facultyname;
 	
 	public Faculty() {

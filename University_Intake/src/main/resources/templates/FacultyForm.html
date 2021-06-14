@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Faculty Form</title>
 </head>
 <body>
 <h1>New Faculty</h1>
+<form th:action="@{/saveFaculty}" method="post">
+Faculty Name : <input type="text" name="facultyname" id="facultyname" required="required"> <button type="submit">Save</button>
+</form>
 </body>
 </html>
