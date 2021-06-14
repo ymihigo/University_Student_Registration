@@ -27,6 +27,7 @@ public class ViewControll {
 	@RequestMapping("/")
 	public String root(Model model) {
 		model.addAttribute("facultylist",facServ.allFaculty());
+		model.addAttribute("allStudent",this.stuServ.allStudent());
 		return "index";
 	}
 	

@@ -59,8 +59,11 @@ public class StudentServicesImpl implements StudentServices{
 
 	@Override
 	public List<Student> allStudent() {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return this.sturepo.findAll();
+		}catch (Exception e) {
+		throw new RuntimeException(e.getMessage());
+		}
 	}
 	
 }
