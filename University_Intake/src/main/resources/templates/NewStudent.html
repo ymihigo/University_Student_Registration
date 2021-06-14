@@ -5,12 +5,17 @@
 <title>New Student</title>
 </head>
 <body>
-<h1>New Student</h1>
-<form action="">
+<form th:action="@{/saveNewStudent}" method="post" enctype="multipart/form-data">
 <label>Full name</label> <input type="text" name="stname" id="stname"><br><br>
-<label>Phone</label> <input type="text" name="stname" id="stname"><br><br>
-<label>Email</label> <input type="email" name="stname" id="stname"><br><br>
-<input type="email" name="stname" id="stname"><br><br>
+<label>Phone</label> <input type="text" name="stphone" id="stphone"><br><br>
+<label>Email</label> <input type="email" name="stemail" id="stemail"><br><br>
+<label>Gender</label> <input type="radio" name="gender" value="Male"> Male  <input type="radio" name="gender" value="Female"> Female <br><br>
+<label>Photo</label> <input type="file" name="filez" accept="image/png, image/jpeg"><br><br>
+<label>Faculty</label> <select name="faculty">
+							<option th:each="faculty : ${facultylist}" th:value="${faculty.id}" th:text="${faculty.facultyname}"></option>
+						</select><br><br>
+<button type="submit">Save</button>
 </form>
+
 </body>
 </html>

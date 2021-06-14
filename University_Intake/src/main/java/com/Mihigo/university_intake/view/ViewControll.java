@@ -1,7 +1,6 @@
 package com.Mihigo.university_intake.view;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,13 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.Mihigo.university_intake.Services.FacultyService;
-import com.Mihigo.university_intake.models.Faculty;
-import com.Mihigo.university_intake.repository.FacultyRepository;
+import com.Mihigo.university_intake.Services.StudentServices;
 
-import net.bytebuddy.asm.Advice.Return;
 
 @Controller
 public class ViewControll {
@@ -23,20 +21,33 @@ public class ViewControll {
 	@Autowired
 	private FacultyService facServ;
 	
+	@Autowired
+	private StudentServices stuServ;
+	
 	@RequestMapping("/")
 	public String root(Model model) {
-//		List<Faculty> facList=new ArrayList<>();
-//		facList=facRepo.findAll();
-//		model.addAttribute("facultylist",facList);
 		model.addAttribute("facultylist",facServ.allFaculty());
 		return "index";
 	}
 	
 	@RequestMapping("/newStudent")
 	public String newStudent(Model model) {
+		model.addAttribute("facultylist",this.facServ.allFaculty());
 		return "NewStudent";
 	}
 	
+	
+	@PostMapping("/saveNewStudent")
+	public RedirectView saveNewStudent(@RequestParam("stname") String names,@RequestParam("stphone") String phone,@RequestParam("faculty") String facultyid,
+			@RequestParam("gender") String gender, @RequestParam("stemail") String email, @RequestParam("filez") MultipartFile file) {
+		try {
+		stuServ.newStudent(names, phone, email, gender, file, facultyid);
+		return new RedirectView("/");
+		}catch (Exception e) {
+			return new RedirectView("/newStudent");
+			// TODO: handle exception
+		}
+	}
 	
 	@RequestMapping("/newFaculty")
 	public String newFaculty(Model model) {

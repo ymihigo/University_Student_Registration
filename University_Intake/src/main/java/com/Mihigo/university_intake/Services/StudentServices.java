@@ -12,6 +12,6 @@ import com.Mihigo.university_intake.models.Student;
 public interface StudentServices{
 
 	
-	void newStudent(String names, String phone, @Email String email, String gender, MultipartFile photo, long facultyId);
+	void newStudent(String names, String phone, @Email String email, String gender, MultipartFile photo, String facultyId);
 	List<Student> allStudent();
 }

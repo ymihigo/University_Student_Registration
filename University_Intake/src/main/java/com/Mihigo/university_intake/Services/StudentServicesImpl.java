@@ -26,10 +26,11 @@ public class StudentServicesImpl implements StudentServices{
 	
 	@Override
 	public void newStudent(String names, String phone, @Email String email, String gender, MultipartFile photo,
-			long facultyId) {
+			String facultyId) {
 		try {
 			Faculty fac=new Faculty();
-			fac=facServ.searchById(facultyId);
+			long fid=Long.parseLong(facultyId);
+			fac=facServ.searchById(fid);
 			
 			Student st=new Student();
 			if(fac == null) {
