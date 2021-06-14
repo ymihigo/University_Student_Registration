@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.Mihigo.university_intake.models.Student;
 
-public interface StudentServices extends JpaRepository<Student, Long>{
+public interface StudentServices{
 
 	
 	void newStudent(String names, String phone, @Email String email, String gender, String photo, int facultyId);

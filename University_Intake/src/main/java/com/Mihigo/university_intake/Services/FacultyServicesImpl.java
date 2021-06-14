@@ -28,6 +28,16 @@ public class FacultyServicesImpl implements FacultyService{
 		
 		return facrepo.findAll();
 	}
+
+	@Override
+	public Faculty searchById(Long id) {
+		try {
+			Faculty fac=facrepo.getById(id);
+			return fac;
+		}catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+	}
 	
 
 }

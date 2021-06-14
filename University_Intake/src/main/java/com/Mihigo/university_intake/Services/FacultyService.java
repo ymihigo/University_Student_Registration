@@ -10,4 +10,5 @@ public interface FacultyService {
 	
 	void newFaculty(String name);
 	List<Faculty> allFaculty();
+	Faculty searchById(Long id);
 }
