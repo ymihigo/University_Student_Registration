@@ -14,4 +14,6 @@ public interface StudentServices{
 	
 	void newStudent(String names, String phone, @Email String email, String gender, MultipartFile photo, String facultyId);
 	List<Student> allStudent();
+	void deleteStudent(long Id);
+	
 }

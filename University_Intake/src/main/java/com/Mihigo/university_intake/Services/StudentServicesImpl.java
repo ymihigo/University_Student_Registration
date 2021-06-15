@@ -65,5 +65,15 @@ public class StudentServicesImpl implements StudentServices{
 		throw new RuntimeException(e.getMessage());
 		}
 	}
+
+	@Override
+	public void deleteStudent(long id) {
+		try {
+			this.sturepo.deleteById(id);
+		}catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+	}
 	
 }
