@@ -7,7 +7,7 @@
 <body>
  
 <h1>Student List</h1>
-<a th:href="@{/newStudent}">New Student</a>  
+<a th:href="@{/newStudent}"><button>New Student</button></a>  
 <table border="2">
 <thead>
 <th>Picture</th>
@@ -15,20 +15,25 @@
 <th>Phone</th>
 <th>Email</th>
 <th>Gender</th>
+<th colspan="2">Actions</th>
 </thead>
 <tbody>
 <tr th:each="student : ${allStudent}">
-<th scope="row"> <img alt="" th:src="*{'data:image/jpeg;base64,'+{student.photo}}" style="width: 100px;height: 100px;"> </th>
-<td>[[*{student.names}]]</td>
+<th scope="row"> <img alt="" th:src="*{'data:image/jpeg;base64,'+{student.photo}}" style="width: 100px;height: 100px;"><br>
+<a href=""><button>Update</button></a>
+</th>
+<td>[[*{student.names}]</td>
 <td>[[*{student.phone}]]</td>
 <td>[[*{student.email}]]</td>
 <td>[[*{student.gender}]]</td>
+<td><a href="@{/DeleteStudent/{id}(id=${student.id})}"><button>Delete</button></a></td>
+<td><a href=""><button>Update</button></a></td>
 </tr>
 </tbody>
 </table>
 
 <h1>Faculty list</h1>
-<a th:href="@{/newFaculty}">New Faculty</a>
+<a th:href="@{/newFaculty}"><button>New Faculty</button></a>
 <table border="2">
 <thead>
 <th>ID</th>

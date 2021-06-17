@@ -5,6 +5,7 @@ package com.Mihigo.university_intake.view;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,6 +66,17 @@ public class ViewControll {
 			// TODO: handle exception
 			return new RedirectView("/newFaculty");
 		}
+	}
+	
+	@RequestMapping("/deleteStudent/{id}")
+	public String deleteStudent(@PathVariable(value = "id") long id,Model model) {
+		try {
+			this.stuServ.deleteStudent(id);
+			return "/";
+		}catch (Exception e) {
+			return "/newStudent";
+		}
+		
 	}
 	
 }
